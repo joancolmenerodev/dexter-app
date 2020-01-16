@@ -1,0 +1,21 @@
+# Android Studio 
+#
+# Git ignore
+
+# Gradle
+.gradle
+local.properties
+
+# Build output
+build/
+/out/
+android/production/*
+android/release/*
+
+# IDE
+*.iml
+.idea/
+captures/
+*.klib
+
+
