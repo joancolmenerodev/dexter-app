@@ -42,6 +42,7 @@ kotlin {
                 implementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime-common:$serialization_version"
                 implementation "io.ktor:ktor-client-core:$ktor_version"
                 implementation "io.ktor:ktor-client-json:$ktor_version"
+                implementation "io.ktor:ktor-client-logging:$ktor_version"
             }
         }
 
@@ -53,6 +54,8 @@ kotlin {
                 implementation "io.ktor:ktor-client-core-jvm:$ktor_version"
                 implementation "io.ktor:ktor-client-json-jvm:$ktor_version"
                 implementation "io.ktor:ktor-client-okhttp:$ktor_version"
+                implementation "io.ktor:ktor-client-logging-jvm:$ktor_version"
+                implementation "org.slf4j:slf4j-simple:1.6.1"
             }
         }
 
@@ -63,6 +66,7 @@ kotlin {
                 implementation "io.ktor:ktor-client-ios:$ktor_version"
                 implementation "io.ktor:ktor-client-core-native:$ktor_version"
                 implementation "io.ktor:ktor-client-json-native:$ktor_version"
+                implementation "io.ktor:ktor-client-logging-native:$ktor_version"
             }
         }
 
