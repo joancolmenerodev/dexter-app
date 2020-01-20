@@ -14,8 +14,8 @@ class ExampleUnitTest {
     @Test
     fun testPokedexApi() {
         runBlocking {
-            val pokemons = PokemonRepository().getPokemons()
-            pokemons.forEach {
+            val pokemons = PokemonRepository().getPokemons().toOptional().toNullable()
+            pokemons?.forEach {
                 println(it)
             }
         }

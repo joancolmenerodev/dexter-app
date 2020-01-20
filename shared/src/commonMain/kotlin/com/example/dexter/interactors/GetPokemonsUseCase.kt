@@ -10,7 +10,7 @@ import kotlin.coroutines.CoroutineContext
 
 class GetPokemonsUseCase(foreground: CoroutineContext) : UseCase<List<Pokemon>, Unit>(foreground) {
 
-    override suspend fun run(parameter: Unit?): Either<Failure, List<Pokemon>> = tryEither {
+    override suspend fun run(parameter: Unit?): Either<Failure, List<Pokemon>> =
         PokemonRepository().getPokemons()
-    }
+
 }
