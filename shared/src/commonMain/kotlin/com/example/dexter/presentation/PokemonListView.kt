@@ -1,5 +1,7 @@
 package com.example.dexter.presentation
 
-class PokemonListView {
+
+interface PokemonListView {
+    fun showPokemons()
 
 }

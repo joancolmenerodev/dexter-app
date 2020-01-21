@@ -10,19 +10,20 @@ import kotlin.coroutines.CoroutineContext
 
 class PokemonListPresenter : BasePresenter<PokemonListView> {
 
-    var getPokemonsUseCase: GetPokemonsUseCase? = null
+    private var getPokemonsUseCase: GetPokemonsUseCase? = null
 
     override fun onViewReady(view: PokemonListView) {
         println("test")
 
-        val getPokemonsUseCase = GetPokemonsUseCase(Dispatchers.Main)
-        getPokemonsUseCase.cancel()
-        getPokemonsUseCase.execute {
+        getPokemonsUseCase = GetPokemonsUseCase(Dispatchers.Main)
+        getPokemonsUseCase!!.cancel()
+        // TODO execute is not run in the unit tests :( ExampleUnitTest
+        getPokemonsUseCase!!.execute {
             println("hello")
             val result = it.toOptional().toNullable()
+            view.showPokemons()
             println(result)
         }
-
     }
 
     override fun onViewDestroyed() {
