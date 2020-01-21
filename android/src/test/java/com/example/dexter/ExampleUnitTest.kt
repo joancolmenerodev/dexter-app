@@ -55,8 +55,8 @@ class ExampleUnitTest {
             launch(Dispatchers.Main) {
                 val presenter = PokemonListPresenter()
                 presenter.onViewReady(mockView)
+                Mockito.verify(mockView).showPokemons()
             }
-            Mockito.verify(mockView).showPokemons()
         }
     }
 

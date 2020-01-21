@@ -13,16 +13,11 @@ class PokemonListPresenter : BasePresenter<PokemonListView> {
     private var getPokemonsUseCase: GetPokemonsUseCase? = null
 
     override fun onViewReady(view: PokemonListView) {
-        println("test")
 
         getPokemonsUseCase = GetPokemonsUseCase(Dispatchers.Main)
-        getPokemonsUseCase!!.cancel()
-        // TODO execute is not run in the unit tests :( ExampleUnitTest
         getPokemonsUseCase!!.execute {
-            println("hello")
             val result = it.toOptional().toNullable()
             view.showPokemons()
-            println(result)
         }
     }
 
