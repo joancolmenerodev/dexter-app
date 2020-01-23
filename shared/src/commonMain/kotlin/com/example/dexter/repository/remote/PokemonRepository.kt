@@ -15,7 +15,7 @@ class PokemonRepository : BaseRepository() {
     suspend fun getPokemons(): Either<Failure, List<Pokemon>> =
         tryEither {
             ClientApi.getPokemons().results.pmap {
-                Pokemon(it.name, getPokemonDetailResponse(it.name).sprites.front_default)
+                Pokemon(it.name, getPokemonDetailResponse(it.name).sprites.front_default, false)
             }
         }
 
