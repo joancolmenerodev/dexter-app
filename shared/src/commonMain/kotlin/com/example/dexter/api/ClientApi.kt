@@ -13,6 +13,7 @@ import io.ktor.client.features.logging.Logging
 import io.ktor.client.request.*
 import io.ktor.http.*
 import kotlinx.serialization.json.JSON
+import kotlinx.serialization.json.Json
 import kotlinx.serialization.list
 import kotlin.native.concurrent.*
 
@@ -22,7 +23,7 @@ object ClientApi {
 
     private val client = HttpClient {
         install(JsonFeature) {
-            serializer = KotlinxSerializer(JSON.nonstrict).apply {
+            serializer = KotlinxSerializer(Json.nonstrict).apply {
                 registerList(GetPokemonApiModel.serializer().list)
             }
         }
