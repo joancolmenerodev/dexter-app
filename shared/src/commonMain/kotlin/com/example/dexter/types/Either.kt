@@ -32,9 +32,14 @@ sealed class Either<out L, out R> {
 
 }
 
-fun <L, R, T> Either<L, R>.flatMap(f: (R) -> Either<L, T>): Either<L, T> {
-    return when (this) {
+fun <L, R, T> Either<L, R>.flatMapR(transform: (R) -> Either<L, T>): Either<L, T> =
+    when (this) {
         is Either.Left -> left(a)
-        is Either.Right -> f.invoke(b)
+        is Either.Right -> transform(b)
     }
-}
+
+fun <L, R, T> Either<L, R>.flatMapL(transform: (L) -> Either<T, R>): Either<T, R> =
+    when (this) {
+        is Either.Left -> transform(a)
+        is Either.Right -> right(b)
+    }

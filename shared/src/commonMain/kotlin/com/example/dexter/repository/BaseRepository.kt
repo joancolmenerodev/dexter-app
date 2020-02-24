@@ -10,23 +10,18 @@ abstract class BaseRepository {
         try {
             call()
         } catch (pipelineError: ReceivePipelineException) {
-            throw checkStatus(pipelineError.request.response.status.value, pipelineError.message)
+            throw checkStatus(pipelineError.request.response.status.value, pipelineError)
         } catch (statusError: BadResponseStatusException) {
-            throw checkStatus(statusError.statusCode.value, statusError.message)
-        } catch (error: Throwable) {
-            throw Failure.Internal(error.message)
+            throw checkStatus(statusError.statusCode.value, statusError)
+        } catch (error: Exception) {
+            throw Failure.Internal(error)
         }
 
-    private fun checkStatus(status: Int?, message: String? = null): Throwable {
-        return when (status) {
+    private fun checkStatus(status: Int?, cause: Exception? = null): Exception =
+        when (status) {
             400 -> Failure.WrongParameters
-            402 -> Failure.PaymentRequired
-            401 -> Failure.InvalidToken
-            403 -> Failure.Forbidden
             404 -> Failure.NotFound
             500, 503 -> Failure.ServiceUnavailable
-            else -> Failure.Internal(message)
+            else -> Failure.Internal(cause ?: IllegalStateException("Status: $status"))
         }
-    }
-
 }

@@ -10,10 +10,12 @@ import kotlin.coroutines.CoroutineContext
 /**
  * Abstract execution unit for different use cases.
  *
- * @param <T> request type
+ * @param <R> request type
+ * @param <L> failure type
  * @param <I> parameter
  */
-abstract class UseCase<T, I>(private val foreground: CoroutineContext): CoroutineScope {
+abstract class UseCase<R, L : Failure, I>(private val foreground: CoroutineContext):
+    CoroutineScope {
 
     private val job = Job()
 
@@ -23,7 +25,7 @@ abstract class UseCase<T, I>(private val foreground: CoroutineContext): Coroutin
     /**
      * Method to execute the use case
      */
-    fun execute(parameter: I? = null, block: (Either<Failure, T>) -> Unit) {
+    fun execute(parameter: I? = null, block: (Either<L, R>) -> Unit) {
         launch {
             block(run(parameter))
         }
@@ -39,6 +41,6 @@ abstract class UseCase<T, I>(private val foreground: CoroutineContext): Coroutin
     /**
      * Abstract method to implement the use case
      */
-    abstract suspend fun run(parameter: I?): Either<Failure, T>
+    abstract suspend fun run(parameter: I?): Either<L, R>
 
 }

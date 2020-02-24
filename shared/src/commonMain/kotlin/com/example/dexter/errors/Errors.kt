@@ -1,17 +1,15 @@
 package com.example.dexter.errors
 
-sealed class Failure(message: String? = null): Exception(message) {
+sealed class Failure(cause: Exception? = null): Exception(cause) {
 
-    object WrongParameters: Failure("The input parameters were wrong")
-    object PaymentRequired: Failure("Can't complete this action without payment")
-    object InvalidToken: Failure("The provided token was invalid")
-    object Forbidden: Failure("Forbidden access to the resource")
-    object NotFound: Failure("The requested resource was not found")
-    object ServiceUnavailable: Failure("Service failure")
+    object WrongParameters: Failure()
+    object NotFound: Failure()
+    object ServiceUnavailable: Failure()
+    class Internal(cause: Exception): Failure(cause)
+}
 
-    class Internal(message: String?): Failure(message)
+sealed class PokemonListFailure(cause: Exception? = null): Failure(cause) {
 
-    override fun toString(): String {
-        return super.message ?: super.toString()
-    }
+    object FailureLoadingList: PokemonListFailure()
+    class Unexpected(cause: Exception): PokemonListFailure(cause)
 }

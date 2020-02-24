@@ -1,4 +1,4 @@
-package com.example.dexter.api.data
+package com.example.dexter.api.dto
 
 import kotlinx.serialization.Serializable
 
