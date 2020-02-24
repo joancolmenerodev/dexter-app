@@ -16,7 +16,7 @@ class GetPokemonsUseCase(
 ) : UseCase<List<Pokemon>, PokemonListFailure, Unit>(foreground) {
 
     override suspend fun run(parameter: Unit?): Either<PokemonListFailure, List<Pokemon>> =
-        pokemonRepository.getPokemons()
+        pokemonRepository.getPokemons(0, 50)
             .flatMapL { failure: Failure ->
                 when (failure) {
                     is Failure.ServiceUnavailable -> {

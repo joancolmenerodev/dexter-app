@@ -35,8 +35,8 @@ class ServiceApi(private val baseUrl: String) {
         }
     }
 
-    suspend fun getPokemons(): GetPokemonResponse = client.get {
-        apiUrl("api/v2/pokemon")
+    suspend fun getPokemons(offset: Int, limit: Int): GetPokemonResponse = client.get {
+        apiUrl("api/v2/pokemon?offset=$offset&limit=$limit")
     }
 
     suspend fun getPokemonDetail(name: String): GetPokemonDetailResponse = client.get {

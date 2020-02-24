@@ -1,7 +1,9 @@
 package com.example.dexter
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.GridLayoutManager
 import com.example.dexter.models.Pokemon
 import com.example.dexter.presentation.PokemonListPresenter
 import com.example.dexter.presentation.PokemonListView
@@ -17,15 +19,16 @@ class MainActivity : AppCompatActivity(), PokemonListView {
         setContentView(R.layout.activity_main)
         inject()
 
+        setupList()
         presenter.onViewReady(this)
     }
 
     override fun showLoading() {
-        println("SHOW LOADING")
+        loading.visibility = View.VISIBLE
     }
 
     override fun hideLoading() {
-        println("HIDE LOADING")
+        loading.visibility = View.GONE
     }
 
     override fun showServiceError() {
@@ -33,7 +36,13 @@ class MainActivity : AppCompatActivity(), PokemonListView {
     }
 
     override fun showPokemons(list: List<Pokemon>) {
-        println(list)
+        (pokemonList.adapter as PokemonListAdapter).addItems(list)
+    }
+
+    private fun setupList() {
+        pokemonList.setHasFixedSize(true)
+        pokemonList.layoutManager = GridLayoutManager(this, 3)
+        pokemonList.adapter = PokemonListAdapter()
     }
 
     private fun inject() {
