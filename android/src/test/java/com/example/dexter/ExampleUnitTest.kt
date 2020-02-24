@@ -1,23 +1,26 @@
 package com.example.dexter
 
+import com.example.dexter.models.Pokemon
 import com.example.dexter.presentation.PokemonListPresenter
 import com.example.dexter.presentation.PokemonListView
-import com.example.dexter.repository.data.Pokemon
 import com.example.dexter.repository.remote.PokemonRepository
+import com.example.dexter.types.Either
+import com.example.dexter.useCases.GetPokemonsUseCase
+import com.example.dexter.utils.Logger
+import com.nhaarman.mockitokotlin2.stub
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.newSingleThreadContext
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.setMain
-import org.hamcrest.CoreMatchers.*
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
-import org.junit.runner.RunWith
-import org.mockito.Mock
+import org.mockito.ArgumentMatchers.any
+import org.mockito.BDDMockito.given
 import org.mockito.Mockito
-import org.mockito.runners.MockitoJUnitRunner
+import org.mockito.Mockito.mock
 
 
 /**
@@ -25,18 +28,12 @@ import org.mockito.runners.MockitoJUnitRunner
  *
  * See [testing documentation](http://d.android.com/tools/testing).
  */
-@RunWith(MockitoJUnitRunner::class)
+@ExperimentalCoroutinesApi
 class ExampleUnitTest {
-
-    @Mock
-    private lateinit var mockView: PokemonListView
-
-
-    private val mainThreadSurrogate = newSingleThreadContext("UI thread")
 
     @Before
     fun setup() {
-        Dispatchers.setMain(mainThreadSurrogate)
+        Dispatchers.setMain(Dispatchers.Unconfined)
     }
 
     @Test
@@ -52,17 +49,24 @@ class ExampleUnitTest {
     @Test
     fun testPresenter() {
         runBlocking {
-            launch(Dispatchers.Main) {
-                val presenter = PokemonListPresenter()
-                presenter.onViewReady(mockView)
-                Mockito.verify(mockView).showPokemons()
+            val mockView = mock(PokemonListView::class.java)
+            val repository = mock(PokemonRepository::class.java)
+            val list = listOf<Pokemon>()
+            repository.stub {
+                onBlocking { getPokemons() }.thenReturn(Either.Right(list))
             }
+            val presenter = PokemonListPresenter(GetPokemonsUseCase(repository), Logger())
+            presenter.onViewReady(mockView)
+            Mockito.verify(mockView).showLoading()
+
+
+            Mockito.verify(mockView).hideLoading()
+            Mockito.verify(mockView).showPokemons(list)
         }
     }
 
     @After
     fun tearDown() {
-        Dispatchers.resetMain() // reset main dispatcher to the original Main dispatcher
-        mainThreadSurrogate.close()
+        Dispatchers.resetMain()
     }
 }

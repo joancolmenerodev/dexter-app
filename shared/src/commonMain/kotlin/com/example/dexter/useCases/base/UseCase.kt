@@ -1,4 +1,4 @@
-package com.example.dexter.interactors.base
+package com.example.dexter.useCases.base
 
 import com.example.dexter.errors.Failure
 import com.example.dexter.types.Either
