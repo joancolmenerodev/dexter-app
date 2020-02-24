@@ -21,9 +21,7 @@ import kotlinx.serialization.json.Json
 import kotlinx.serialization.list
 
 @Suppress("EXPERIMENTAL_API_USAGE")
-object ClientApi {
-
-    private const val URL = "https://pokeapi.co"
+class ServiceApi(private val baseUrl: String) {
 
     private val client = HttpClient {
         install(JsonFeature) {
@@ -52,7 +50,7 @@ object ClientApi {
     private fun HttpRequestBuilder.apiUrl(path: String) {
         header(HttpHeaders.CacheControl, "no-cache")
         url {
-            takeFrom(URL)
+            takeFrom(baseUrl)
             encodedPath = path
         }
     }
