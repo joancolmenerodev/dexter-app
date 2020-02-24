@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name" translatable="false">Dexter</string>
+    <string name="error_service">The service isn\'t available</string>
 </resources>

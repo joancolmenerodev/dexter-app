@@ -1,5 +1,6 @@
 package com.example.dexter
 
+import com.example.dexter.api.ServiceApi
 import com.example.dexter.models.Pokemon
 import com.example.dexter.presentation.PokemonListPresenter
 import com.example.dexter.presentation.PokemonListView
@@ -22,14 +23,8 @@ import org.mockito.BDDMockito.given
 import org.mockito.Mockito
 import org.mockito.Mockito.mock
 
-
-/**
- * Example local unit test, which will execute on the development machine (host).
- *
- * See [testing documentation](http://d.android.com/tools/testing).
- */
 @ExperimentalCoroutinesApi
-class ExampleUnitTest {
+class PokemonListTest {
 
     @Before
     fun setup() {
@@ -39,9 +34,16 @@ class ExampleUnitTest {
     @Test
     fun testRepository() {
         runBlocking {
-            val pokemons = PokemonRepository().getPokemons().toOptional().toNullable()
+            // GIVEN TODO: Flaky dry run test
+            val serviceApi = ServiceApi("https://pokeapi.co")
+
+            // WHEN
+            val pokemons = PokemonRepository(serviceApi).getPokemons().toOptional().toNullable()
+
+            // THEN
             pokemons?.forEach {
                 println(it)
+                assert(it.name.isNotEmpty())
             }
         }
     }
@@ -49,17 +51,20 @@ class ExampleUnitTest {
     @Test
     fun testPresenter() {
         runBlocking {
+            // GIVEN
             val mockView = mock(PokemonListView::class.java)
             val repository = mock(PokemonRepository::class.java)
             val list = listOf<Pokemon>()
             repository.stub {
                 onBlocking { getPokemons() }.thenReturn(Either.Right(list))
             }
+
+            // WHEN
             val presenter = PokemonListPresenter(GetPokemonsUseCase(repository), Logger())
             presenter.onViewReady(mockView)
+
+            // THEN
             Mockito.verify(mockView).showLoading()
-
-
             Mockito.verify(mockView).hideLoading()
             Mockito.verify(mockView).showPokemons(list)
         }
