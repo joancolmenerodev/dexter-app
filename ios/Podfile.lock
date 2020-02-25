@@ -2,6 +2,11 @@ PODS:
   - Kingfisher (5.9.0):
     - Kingfisher/Core (= 5.9.0)
   - Kingfisher/Core (5.9.0)
+  - MaterialComponents/ActivityIndicator (93.3.0):
+    - MaterialComponents/Palettes
+    - MaterialComponents/private/Application
+    - MDFInternationalization
+    - MotionAnimator (~> 2.0)
   - MaterialComponents/AnimationTiming (93.3.0)
   - MaterialComponents/Buttons (93.3.0):
     - MaterialComponents/Elevation
@@ -29,11 +34,6 @@ PODS:
     - MaterialComponents/private/Application
   - MaterialComponents/private/Math (93.3.0)
   - MaterialComponents/private/Overlay (93.3.0)
-  - MaterialComponents/ProgressView (93.3.0):
-    - MaterialComponents/Palettes
-    - MaterialComponents/private/Math
-    - MDFInternationalization
-    - MotionAnimator (~> 2.1)
   - MaterialComponents/Ripple (93.3.0):
     - MaterialComponents/AnimationTiming
     - MaterialComponents/private/Color
@@ -68,7 +68,7 @@ PODS:
 
 DEPENDENCIES:
   - Kingfisher (~> 5.0)
-  - MaterialComponents/ProgressView
+  - MaterialComponents/ActivityIndicator
   - MaterialComponents/Snackbar
 
 SPEC REPOS:
@@ -88,6 +88,6 @@ SPEC CHECKSUMS:
   MotionAnimator: ee16aa30567c5bae0fb2750c132915829cfaaf8a
   MotionInterchange: ead0e3ae1f3a5fb539e289debbc7ae036160a10d
 
-PODFILE CHECKSUM: bd3db7a299fbaec02ac3ae9b4ce6814be1d33311
+PODFILE CHECKSUM: 6585884443180bf06d57462c7999bc8e411730be
 
 COCOAPODS: 1.5.3

@@ -24,7 +24,7 @@ class PokemonViewCell: UICollectionViewCell {
       label.translatesAutoresizingMaskIntoConstraints = false
       label.textColor = UIColor.black
       label.font = label.font.withSize(Constants.Fonts.fontSize)
-      label.textAlignment = .left
+      label.textAlignment = .center
       return label
     }()
     

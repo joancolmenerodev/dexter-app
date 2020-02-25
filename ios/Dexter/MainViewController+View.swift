@@ -13,11 +13,11 @@ import MaterialComponents.MaterialSnackbar
 extension MainViewController: PokemonListView {
     
     func showLoading() {
-        loading.setHidden(true, animated: true)
+        loading.startAnimating()
     }
     
     func hideLoading() {
-        loading.setHidden(false, animated: true)
+        loading.stopAnimating()
     }
     
     func showServiceError() {

@@ -13,12 +13,13 @@ struct Constants {
   struct Size {
     
     static let progressHeight: CGFloat = 10
-    static let listItemHeight: CGFloat = 150
+    static let listItemHeight: CGFloat = 120
+    static let listItemWidth: CGFloat = 120
     static let imageSize: CGFloat = 100
   }
   
   struct Fonts {
-    static let fontSize: CGFloat = 18
+    static let fontSize: CGFloat = 16
   }
   
   struct Margins {

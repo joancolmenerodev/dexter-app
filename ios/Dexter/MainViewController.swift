@@ -17,13 +17,10 @@ class MainViewController: UIViewController {
     var cellId = "pokemonCellId"
     var pokemons = [Pokemon]()
     
-    lazy var loading: MDCProgressView = {
-        let progress = MDCProgressView()
-        progress.translatesAutoresizingMaskIntoConstraints = false
-        progress.heightAnchor.constraint(equalToConstant: Constants.Size.progressHeight).isActive = true
-        progress.progress = 0
-        progress.setHidden(true, animated: false)
-        return progress
+    lazy var loading: MDCActivityIndicator = {
+        let activityIndicator = MDCActivityIndicator()
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        return activityIndicator
     }()
     
     lazy var pokemonList: UICollectionView = {
@@ -68,7 +65,7 @@ extension MainViewController: UICollectionViewDataSource {
         let pokemon = pokemons[indexPath.row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! PokemonViewCell
         cell.image.loadImage(url: pokemon.spriteUrl)
-        cell.title.text = NSString(format: "%x. %c", pokemon.id, pokemon.name) as String
+        cell.title.text = (NSString(format: "%x. %@", pokemon.id, pokemon.name) as String).uppercased()
         return cell
     }
 }
@@ -77,7 +74,7 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-      let width = collectionView.frame.size.width
+      let width = Constants.Size.listItemWidth
       let height = Constants.Size.listItemHeight
       return CGSize(width: width, height: height)
     }
