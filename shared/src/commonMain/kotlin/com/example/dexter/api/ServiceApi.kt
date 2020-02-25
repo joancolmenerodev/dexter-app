@@ -3,6 +3,7 @@ package com.example.dexter.api
 import com.example.dexter.api.dto.GetPokemonApiModel
 import com.example.dexter.api.dto.GetPokemonDetailResponse
 import com.example.dexter.api.dto.GetPokemonResponse
+import com.example.dexter.api.dto.SpritesResponse
 import io.ktor.client.HttpClient
 import io.ktor.client.features.json.JsonFeature
 import io.ktor.client.features.json.serializer.KotlinxSerializer
@@ -25,15 +26,21 @@ class ServiceApi(private val baseUrl: String) {
 
     private val client = HttpClient {
         install(JsonFeature) {
-            serializer = KotlinxSerializer(Json.nonstrict).apply {
-                registerList(GetPokemonApiModel.serializer().list)
-            }
+            serializer = KotlinxSerializer(Json.nonstrict)
+                .apply {
+                    setMapper(GetPokemonResponse::class, GetPokemonResponse.serializer())
+                    setMapper(GetPokemonApiModel::class, GetPokemonApiModel.serializer())
+                    setMapper(GetPokemonDetailResponse::class, GetPokemonDetailResponse.serializer())
+                    setMapper(SpritesResponse::class, SpritesResponse.serializer())
+                }
         }
         install(Logging) {
             logger = Logger.DEFAULT
             level = LogLevel.HEADERS
         }
     }
+
+
 
     suspend fun getPokemons(offset: Int, limit: Int): GetPokemonResponse = client.get {
         apiUrl("api/v2/pokemon?offset=$offset&limit=$limit")
