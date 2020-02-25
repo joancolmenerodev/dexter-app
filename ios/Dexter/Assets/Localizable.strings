@@ -1,0 +1,9 @@
+/* 
+  Localizable.strings
+  Dexter
+
+  Created by Max Cruz on 25/02/2020.
+  Copyright © 2020 Max Cruz. All rights reserved.
+*/
+
+error_service="The service isn\'t available";

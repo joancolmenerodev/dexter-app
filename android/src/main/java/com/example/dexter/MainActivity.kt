@@ -23,6 +23,11 @@ class MainActivity : AppCompatActivity(), PokemonListView {
         presenter.onViewReady(this)
     }
 
+    override fun onDestroy() {
+        presenter.onViewDestroyed()
+        super.onDestroy()
+    }
+
     override fun showLoading() {
         loading.visibility = View.VISIBLE
     }

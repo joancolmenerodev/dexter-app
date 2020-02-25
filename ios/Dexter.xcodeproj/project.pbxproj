@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		0F82CC006E950603AEC8B5E8 /* Pods_DexterUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1A59BC07A275DF0202C1A9F /* Pods_DexterUITests.framework */; };
 		101047EF2404A13500B24A15 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101047EE2404A13500B24A15 /* MainViewController.swift */; };
+		101047F12404A78900B24A15 /* ImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101047F02404A78900B24A15 /* ImageExtensions.swift */; };
+		101047F32404A93E00B24A15 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101047F22404A93E00B24A15 /* Constants.swift */; };
+		101047F62404AA2B00B24A15 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101047F52404AA2B00B24A15 /* Colors.swift */; };
+		101047F82404AC0500B24A15 /* MainViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101047F72404AC0500B24A15 /* MainViewController+Layout.swift */; };
+		101047FA2404AC8400B24A15 /* MainViewController+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101047F92404AC8400B24A15 /* MainViewController+View.swift */; };
+		101047FC2404ADA300B24A15 /* PokemonViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101047FB2404ADA300B24A15 /* PokemonViewCell.swift */; };
+		101047FE2404B75800B24A15 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 101047FD2404B75800B24A15 /* Localizable.strings */; };
 		107ED14023D003BA006D5615 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107ED13F23D003BA006D5615 /* AppDelegate.swift */; };
 		107ED14623D003BC006D5615 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 107ED14523D003BC006D5615 /* Assets.xcassets */; };
 		107ED15723D003BD006D5615 /* DexterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107ED15623D003BD006D5615 /* DexterTests.swift */; };
@@ -52,6 +59,13 @@
 
 /* Begin PBXFileReference section */
 		101047EE2404A13500B24A15 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		101047F02404A78900B24A15 /* ImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtensions.swift; sourceTree = "<group>"; };
+		101047F22404A93E00B24A15 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		101047F52404AA2B00B24A15 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		101047F72404AC0500B24A15 /* MainViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainViewController+Layout.swift"; sourceTree = "<group>"; };
+		101047F92404AC8400B24A15 /* MainViewController+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainViewController+View.swift"; sourceTree = "<group>"; };
+		101047FB2404ADA300B24A15 /* PokemonViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonViewCell.swift; sourceTree = "<group>"; };
+		101047FD2404B75800B24A15 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		107ED13C23D003BA006D5615 /* Dexter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dexter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		107ED13F23D003BA006D5615 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		107ED14523D003BC006D5615 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -103,6 +117,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		101047F42404A9E900B24A15 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				107ED14523D003BC006D5615 /* Assets.xcassets */,
+				101047F22404A93E00B24A15 /* Constants.swift */,
+				101047F52404AA2B00B24A15 /* Colors.swift */,
+				101047FD2404B75800B24A15 /* Localizable.strings */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
 		107ED13323D003BA006D5615 = {
 			isa = PBXGroup;
 			children = (
@@ -128,10 +153,14 @@
 		107ED13E23D003BA006D5615 /* Dexter */ = {
 			isa = PBXGroup;
 			children = (
-				107ED13F23D003BA006D5615 /* AppDelegate.swift */,
-				107ED14523D003BC006D5615 /* Assets.xcassets */,
 				107ED14D23D003BC006D5615 /* Info.plist */,
+				107ED13F23D003BA006D5615 /* AppDelegate.swift */,
 				101047EE2404A13500B24A15 /* MainViewController.swift */,
+				101047F72404AC0500B24A15 /* MainViewController+Layout.swift */,
+				101047F92404AC8400B24A15 /* MainViewController+View.swift */,
+				101047FB2404ADA300B24A15 /* PokemonViewCell.swift */,
+				101047F02404A78900B24A15 /* ImageExtensions.swift */,
+				101047F42404A9E900B24A15 /* Assets */,
 			);
 			path = Dexter;
 			sourceTree = "<group>";
@@ -289,6 +318,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				107ED14623D003BC006D5615 /* Assets.xcassets in Resources */,
+				101047FE2404B75800B24A15 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,8 +461,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				101047FA2404AC8400B24A15 /* MainViewController+View.swift in Sources */,
+				101047F12404A78900B24A15 /* ImageExtensions.swift in Sources */,
+				101047F62404AA2B00B24A15 /* Colors.swift in Sources */,
 				107ED14023D003BA006D5615 /* AppDelegate.swift in Sources */,
+				101047FC2404ADA300B24A15 /* PokemonViewCell.swift in Sources */,
 				101047EF2404A13500B24A15 /* MainViewController.swift in Sources */,
+				101047F32404A93E00B24A15 /* Constants.swift in Sources */,
+				101047F82404AC0500B24A15 /* MainViewController+Layout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
