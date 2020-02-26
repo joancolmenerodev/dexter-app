@@ -5,12 +5,13 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.dexter.models.Pokemon
-import com.example.dexter.presentation.PokemonListPresenter
-import com.example.dexter.presentation.PokemonListView
+import com.example.dexter.presentation.list.PokemonListPresenter
+import com.example.dexter.presentation.list.PokemonListView
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity(), PokemonListView {
+class MainActivity : AppCompatActivity(),
+    PokemonListView {
 
     private lateinit var presenter: PokemonListPresenter
 
@@ -44,10 +45,16 @@ class MainActivity : AppCompatActivity(), PokemonListView {
         (pokemonList.adapter as PokemonListAdapter).addItems(list)
     }
 
+    override fun navigateToDetail(pokemonName: String) {
+        startActivity(PokemonDetail.getPokemonDetailIntent(this, pokemonName))
+    }
+
     private fun setupList() {
         pokemonList.setHasFixedSize(true)
         pokemonList.layoutManager = GridLayoutManager(this, 3)
-        pokemonList.adapter = PokemonListAdapter()
+        pokemonList.adapter = PokemonListAdapter { pokemonName ->
+            presenter.onPokemonClicked(pokemonName)
+        }
     }
 
     private fun inject() {

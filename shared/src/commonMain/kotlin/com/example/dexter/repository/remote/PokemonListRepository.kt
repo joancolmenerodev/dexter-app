@@ -10,7 +10,7 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.coroutineScope
 
-class PokemonRepository(private val service: ServiceApi) : BaseRepository() {
+class PokemonListRepository(private val service: ServiceApi) : BaseRepository() {
 
     suspend fun getPokemons(offset: Int, limit: Int): Either<Failure, List<Pokemon>> =
         tryEither {

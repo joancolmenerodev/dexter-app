@@ -1,16 +1,18 @@
-package com.example.dexter.presentation
+package com.example.dexter.presentation.list
 
 import com.example.dexter.errors.PokemonListFailure
-import com.example.dexter.presentation.base.BasePresenter
 import com.example.dexter.useCases.GetPokemonsUseCase
 import com.example.dexter.utils.Logger
 
 class PokemonListPresenter(
     private val getPokemonsUseCase: GetPokemonsUseCase,
     private val logger: Logger
-) : BasePresenter<PokemonListView> {
+) : ListPresenter {
 
-    override fun onViewReady(view: PokemonListView) {
+    private lateinit var view: PokemonListView
+
+    override fun onViewReady(view: PokemonListView, param: String?) {
+        this.view = view
         view.showLoading()
         getPokemonsUseCase.execute { either ->
             view.hideLoading()
@@ -33,5 +35,10 @@ class PokemonListPresenter(
 
     override fun onViewDestroyed() {
         getPokemonsUseCase.cancel()
+    }
+
+    override fun onPokemonClicked(pokemonName: String) {
+        view.navigateToDetail(pokemonName)
+
     }
 }
