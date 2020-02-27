@@ -1,14 +1,15 @@
 PODS:
-  - Kingfisher (5.9.0):
-    - Kingfisher/Core (= 5.9.0)
-  - Kingfisher/Core (5.9.0)
-  - MaterialComponents/ActivityIndicator (93.3.0):
+  - Kingfisher (5.13.1):
+    - Kingfisher/Core (= 5.13.1)
+  - Kingfisher/Core (5.13.1)
+  - MaterialComponents/ActivityIndicator (106.0.0):
     - MaterialComponents/Palettes
     - MaterialComponents/private/Application
     - MDFInternationalization
     - MotionAnimator (~> 2.0)
-  - MaterialComponents/AnimationTiming (93.3.0)
-  - MaterialComponents/Buttons (93.3.0):
+  - MaterialComponents/AnimationTiming (106.0.0)
+  - MaterialComponents/Availability (106.0.0)
+  - MaterialComponents/Buttons (106.0.0):
     - MaterialComponents/Elevation
     - MaterialComponents/Ink
     - MaterialComponents/private/Math
@@ -19,34 +20,39 @@ PODS:
     - MaterialComponents/Typography
     - MDFInternationalization
     - MDFTextAccessibility
-  - MaterialComponents/Elevation (93.3.0):
+  - MaterialComponents/Elevation (106.0.0):
+    - MaterialComponents/Availability
     - MaterialComponents/private/Color
     - MaterialComponents/private/Math
-  - MaterialComponents/Ink (93.3.0):
+  - MaterialComponents/Ink (106.0.0):
+    - MaterialComponents/Availability
     - MaterialComponents/private/Color
     - MaterialComponents/private/Math
-  - MaterialComponents/OverlayWindow (93.3.0):
+  - MaterialComponents/OverlayWindow (106.0.0):
+    - MaterialComponents/Availability
     - MaterialComponents/private/Application
-  - MaterialComponents/Palettes (93.3.0)
-  - MaterialComponents/private/Application (93.3.0)
-  - MaterialComponents/private/Color (93.3.0)
-  - MaterialComponents/private/KeyboardWatcher (93.3.0):
+  - MaterialComponents/Palettes (106.0.0)
+  - MaterialComponents/private/Application (106.0.0)
+  - MaterialComponents/private/Color (106.0.0):
+    - MaterialComponents/Availability
+  - MaterialComponents/private/KeyboardWatcher (106.0.0):
     - MaterialComponents/private/Application
-  - MaterialComponents/private/Math (93.3.0)
-  - MaterialComponents/private/Overlay (93.3.0)
-  - MaterialComponents/Ripple (93.3.0):
+  - MaterialComponents/private/Math (106.0.0)
+  - MaterialComponents/private/Overlay (106.0.0)
+  - MaterialComponents/Ripple (106.0.0):
     - MaterialComponents/AnimationTiming
     - MaterialComponents/private/Color
     - MaterialComponents/private/Math
-  - MaterialComponents/ShadowElevations (93.3.0)
-  - MaterialComponents/ShadowLayer (93.3.0):
+  - MaterialComponents/ShadowElevations (106.0.0)
+  - MaterialComponents/ShadowLayer (106.0.0):
     - MaterialComponents/ShadowElevations
-  - MaterialComponents/Shapes (93.3.0):
+  - MaterialComponents/Shapes (106.0.0):
     - MaterialComponents/private/Color
     - MaterialComponents/private/Math
     - MaterialComponents/ShadowLayer
-  - MaterialComponents/Snackbar (93.3.0):
+  - MaterialComponents/Snackbar (106.0.0):
     - MaterialComponents/AnimationTiming
+    - MaterialComponents/Availability
     - MaterialComponents/Buttons
     - MaterialComponents/Elevation
     - MaterialComponents/OverlayWindow
@@ -57,7 +63,7 @@ PODS:
     - MaterialComponents/ShadowElevations
     - MaterialComponents/ShadowLayer
     - MaterialComponents/Typography
-  - MaterialComponents/Typography (93.3.0):
+  - MaterialComponents/Typography (106.0.0):
     - MaterialComponents/private/Application
     - MaterialComponents/private/Math
   - MDFInternationalization (2.0.0)
@@ -81,8 +87,8 @@ SPEC REPOS:
     - MotionInterchange
 
 SPEC CHECKSUMS:
-  Kingfisher: ff98240aebb7302bdc4f1ecd701761030ce18b16
-  MaterialComponents: 6b2eb24aa0c1d1a6453f05a6bbe3ed6c80843161
+  Kingfisher: f33a848445e33c543620812158dc5d47f6bf90df
+  MaterialComponents: ded56a6a4d9efb8190613b0d40de5e47df405cee
   MDFInternationalization: 010097556d6b09d2c4ea38e0820ea6d37be6a314
   MDFTextAccessibility: 85c09a1bd9c321f494348e632a25063bcda35a53
   MotionAnimator: ee16aa30567c5bae0fb2750c132915829cfaaf8a

@@ -68,6 +68,12 @@ extension MainViewController: UICollectionViewDataSource {
         cell.title.text = (NSString(format: "%x. %@", pokemon.id, pokemon.name) as String).uppercased()
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let pokemon = pokemons[indexPath.row]
+        presenter?.onPokemonClicked(pokemonName: pokemon.name)
+    }
+   
 }
 
 extension MainViewController: UICollectionViewDelegateFlowLayout {

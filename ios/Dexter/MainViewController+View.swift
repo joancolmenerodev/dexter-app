@@ -11,6 +11,11 @@ import UIKit
 import MaterialComponents.MaterialSnackbar
 
 extension MainViewController: PokemonListView {
+    func navigateToDetail(pokemonName: String) {
+        let detailViewController = DetailViewController()
+        detailViewController.pokemonName = pokemonName
+        navigationController?.pushViewController(detailViewController, animated: true)
+    }
     
     func showLoading() {
         loading.startAnimating()
