@@ -18,7 +18,6 @@ class PokemonDetailRepository(private val service: ServiceApi) : BaseRepository(
                 spriteUrl = detail.sprites.url,
                 height = detail.height.toString(),
                 weight = detail.weight.toString()
-
             )
         }
 }

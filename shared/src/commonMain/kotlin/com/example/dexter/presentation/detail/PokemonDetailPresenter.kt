@@ -1,15 +1,17 @@
 package com.example.dexter.presentation.detail
 
 import com.example.dexter.errors.PokemonDetailFailure
+import com.example.dexter.presentation.base.AbstractPresenter
 import com.example.dexter.useCases.GetPokemonDetailUseCase
 import com.example.dexter.utils.Logger
 
 class PokemonDetailPresenter(
     private val getPokemonsDetailUseCase: GetPokemonDetailUseCase,
     private val logger: Logger
-) : DetailPresenter {
+) : AbstractPresenter<PokemonDetailView>(), DetailPresenter {
 
     override fun onViewReady(view: PokemonDetailView, param: String?) {
+        super.onViewReady(view)
         view.showLoading()
         getPokemonsDetailUseCase.execute(param) { either ->
             view.hideLoading()
@@ -35,6 +37,7 @@ class PokemonDetailPresenter(
     }
 
     override fun onViewDestroyed() {
+        super.onViewDestroyed()
         getPokemonsDetailUseCase.cancel()
     }
 }

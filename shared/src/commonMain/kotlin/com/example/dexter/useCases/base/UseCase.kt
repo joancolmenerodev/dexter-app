@@ -2,9 +2,7 @@ package com.example.dexter.useCases.base
 
 import com.example.dexter.errors.Failure
 import com.example.dexter.types.Either
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
 
 /**
@@ -14,19 +12,15 @@ import kotlin.coroutines.CoroutineContext
  * @param <L> failure type
  * @param <I> parameter
  */
-abstract class UseCase<R, L : Failure, I>(private val foreground: CoroutineContext):
-    CoroutineScope {
+abstract class UseCase<R, L : Failure, I>(private val foreground: CoroutineContext) {
 
-    private val job = Job()
-
-    override val coroutineContext: CoroutineContext
-        get() = foreground + job
+    private var job: Job? = null
 
     /**
      * Method to execute the use case
      */
     fun execute(parameter: I? = null, block: (Either<L, R>) -> Unit) {
-        launch {
+        job = CoroutineScope(foreground).launch {
             block(run(parameter))
         }
     }
@@ -35,7 +29,7 @@ abstract class UseCase<R, L : Failure, I>(private val foreground: CoroutineConte
      * Cancel execution
      */
     fun cancel() {
-        job.cancel()
+        job?.cancel()
     }
 
     /**
