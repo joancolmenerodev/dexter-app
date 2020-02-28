@@ -21,19 +21,19 @@ extension DetailViewController : PokemonDetailView {
     }
     
     func showPokemonName(name: String){
-        
+        pokemonDetailName.text = name
     }
     
     func showPokemonImage(url: String) {
-        
+        pokemonDetailImage.loadImage(url: url)
     }
 
     func showHeight(height: String){
-        
+        pokemonDetailHeight.text = ("Height: \(height)")
     }
     
     func showWeight(weight: String) {
-        
+        pokemonDetailWeight.text = ("Weight: \(weight)")
     }
     
     func showError(){

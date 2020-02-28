@@ -14,7 +14,7 @@ extension MainViewController: PokemonListView {
     func navigateToDetail(pokemonName: String) {
         let detailViewController = DetailViewController()
         detailViewController.pokemonName = pokemonName
-        navigationController?.pushViewController(detailViewController, animated: true)
+        self.present(detailViewController, animated: true, completion: nil)
     }
     
     func showLoading() {

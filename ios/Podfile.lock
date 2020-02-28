@@ -78,7 +78,7 @@ DEPENDENCIES:
   - MaterialComponents/Snackbar
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  trunk:
     - Kingfisher
     - MaterialComponents
     - MDFInternationalization
@@ -96,4 +96,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 6585884443180bf06d57462c7999bc8e411730be
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.9.0.beta.2

@@ -37,10 +37,6 @@ class PokemonViewCell: UICollectionViewCell {
       fatalError("init(coder:) has not been implemented")
     }
     
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        print(title.text)
-    }
-    
     private func setupLayout() {
         addSubview(image)
         image.topAnchor.constraint(equalTo: topAnchor).isActive = true
